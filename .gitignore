@@ -1,2 +1,5 @@
 
 .vs/secsome_lib/v16/
+/Debug
+/secsome_lib/Debug/secsome_lib.tlog
+/secsome_lib/Debug
