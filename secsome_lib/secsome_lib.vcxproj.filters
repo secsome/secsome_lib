@@ -18,6 +18,9 @@
     <ClCompile Include="ExeMain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Interpolation.h">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Distance.h">
@@ -27,6 +30,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SMath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Randomizer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

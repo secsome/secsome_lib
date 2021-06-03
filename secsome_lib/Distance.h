@@ -3,8 +3,9 @@
 #include <SMath.h>
 #include <Point.h>
 
-namespace secsome::distances
+namespace secsome::distance
 {   
+    using namespace secsome::point;
 #pragma region Euclidean
     // std::true_type for sqrted value
     // std::false_type for un-sqrted value

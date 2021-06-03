@@ -146,10 +146,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ExeMain.cpp" />
+    <ClCompile Include="Interpolation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Distance.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Randomizer.h" />
     <ClInclude Include="SMath.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
