@@ -99,7 +99,6 @@ namespace secsome::structure
 			this->values.clear();
 		}
 
-	private:
 		typename container_t::const_iterator get_iterator(const TKey& key) const {
 			return std::find_if(this->values.begin(), this->values.end(), [&](const container_t::value_type& item) {
 				return item.first == key;
@@ -111,6 +110,7 @@ namespace secsome::structure
 			return this->values.back().second;
 		}
 
+	private:
 		container_t values;
 	};
 

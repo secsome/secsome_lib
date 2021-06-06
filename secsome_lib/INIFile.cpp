@@ -46,8 +46,8 @@ bool secsome::file::INIFile::load_from_file(ifstream& fin)
             auto divider = buffer.find_first_of('=');
             if (divider == string::npos) continue;
 
-            INIEntry entry{ buffer.substr(0,divider),buffer.substr(divider + 1) };
-            section.add_entry(entry);
+            INIEntry entry{ buffer.substr(divider + 1) };
+            section.add_entry(buffer.substr(0, divider), entry);
         }
 
         if (!section.is_empty())
@@ -67,7 +67,7 @@ bool secsome::file::INIFile::save_to_file(ofstream& fout) const
     {
         fout << L"[" << section.first << L"]\n";
         for (const auto& pair : section.second)
-            fout << pair.first << L"=" << pair.second.Value << L"\n";
+            fout << pair.first << L"=" << pair.second << L"\n";
         fout << L"\n";
     }
 
@@ -94,6 +94,18 @@ secsome::file::INISection* secsome::file::INIFile::get_section(string section)
     return dict_.find(section);
 }
 
+size_t secsome::file::INIFile::get_section_count()
+{
+    return dict_.size();
+}
+
+secsome::file::INISection& secsome::file::INIFile::operator[](string section)
+{
+    if (auto result = dict_.find(section))
+        return *result;    
+    return dict_.insert_unchecked(section, secsome::file::INISection(section));
+}
+
 bool secsome::file::INIFile::trim_comment(string& src)
 {
     if (auto const flag = src.find(';') != string::npos)
@@ -109,12 +121,27 @@ bool secsome::file::INISection::is_empty() const
     return dict_.empty();
 }
 
-void secsome::file::INISection::add_entry(const INIEntry& entry)
+void secsome::file::INISection::add_entry(const string key, const INIEntry& entry)
 {
-    dict_.insert(entry.Key, entry);
+    dict_.insert(key, entry);
+}
+
+string* secsome::file::INISection::get_entry(const string key)
+{
+    return dict_.find(key);
 }
 
 string secsome::file::INISection::get_section_name() const
 {
     return section_;
+}
+
+size_t secsome::file::INISection::get_entry_count() const
+{
+    return dict_.size();
+}
+
+secsome::file::INIEntry& secsome::file::INISection::operator[](string key)
+{
+    return dict_[key];
 }

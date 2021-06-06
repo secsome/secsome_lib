@@ -8,17 +8,7 @@
 
 namespace secsome::file
 {
-    class INIEntry
-    {
-    public:
-        explicit INIEntry(const string& key, const string& value) : Key{ key }, Value{ value }{}
-
-        bool operator< (const INIEntry &another) const { return Key < another.Key; }
-
-        string Key;
-        string Value;
-    };
-
+    using INIEntry = string;
 
     class INISection
     {
@@ -28,37 +18,25 @@ namespace secsome::file
         explicit INISection(const string& name) : section_{ name } {}
 
         bool is_empty() const;
-        void add_entry(const INIEntry& entry);
+        void add_entry(const string key, const INIEntry& entry);
+        string* get_entry(const string key);
         string get_section_name() const;
+        size_t get_entry_count() const;
 
         using iterator = SectionDict::iterator;
         using const_iterator = SectionDict::const_iterator;
 
-        [[nodiscard]] iterator begin() noexcept
-        {
-            return dict_.begin();
-        }
+        [[nodiscard]] iterator begin() noexcept { return dict_.begin(); }
+        [[nodiscard]] const_iterator begin() const noexcept { return dict_.begin(); }
+        [[nodiscard]] iterator end() noexcept { return dict_.end(); }
+        [[nodiscard]] const_iterator end() const noexcept { return dict_.end(); }
 
-        [[nodiscard]] const_iterator begin() const noexcept
-        {
-            return dict_.begin();
-        }
-
-        [[nodiscard]] iterator end() noexcept
-        {
-            return dict_.end();
-        }
-
-        [[nodiscard]] const_iterator end() const noexcept
-        {
-            return dict_.end();
-        }
+        INIEntry& operator[](string key);
 
     private:
         string section_;
         SectionDict dict_;
     };
-
 
     class INIFile
     {
@@ -74,6 +52,9 @@ namespace secsome::file
         bool is_loaded() const;
         void add_section(const INISection& section);
         INISection* get_section(string section);
+        size_t get_section_count();
+
+        INISection& operator[] (string section);
 
     private:
         bool trim_comment(string& src);
