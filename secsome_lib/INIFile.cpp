@@ -53,6 +53,8 @@ bool secsome::file::INIFile::load_from_file(ifstream& fin)
         if (!section.is_empty())
             add_section(section);
     }
+
+    loaded_ = true;
     return true;
 }
 
