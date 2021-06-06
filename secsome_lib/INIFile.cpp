@@ -61,10 +61,10 @@ bool secsome::file::INIFile::save_to_file(ofstream& fout) const
     if (!fout.is_open())
         return false;
 
-    for (auto& section : dict_)
+    for (const auto& section : dict_)
     {
         fout << L"[" << section.first << L"]\n";
-        for (auto& pair : section.second)
+        for (const auto& pair : section.second)
             fout << pair.first << L"=" << pair.second.Value << L"\n";
         fout << L"\n";
     }
