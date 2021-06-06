@@ -21,6 +21,9 @@
     <ClCompile Include="Interpolation.h">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="INIFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Distance.h">
@@ -33,6 +36,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Randomizer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="INIFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Strings.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VectoredMap.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

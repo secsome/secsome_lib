@@ -146,13 +146,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ExeMain.cpp" />
+    <ClCompile Include="INIFile.cpp" />
     <ClCompile Include="Interpolation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Base.h" />
     <ClInclude Include="Distance.h" />
+    <ClInclude Include="INIFile.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Randomizer.h" />
     <ClInclude Include="SMath.h" />
+    <ClInclude Include="Strings.h" />
+    <ClInclude Include="VectoredMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

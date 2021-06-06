@@ -22,4 +22,17 @@ namespace secsome::smath {
     {
         return v * std::numbers::pi / 180;
     }
+
+    template<typename T>
+    T gcd(const T&& a, const T&& b)
+    {
+        if (a < b)
+            std::swap(a, b);
+        while (b > 0)
+        {
+            a %= b;
+            std::swap(a, b);
+        };
+        return a;
+    }
 }
